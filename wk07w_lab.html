@@ -39,38 +39,51 @@ Released under the MIT license: http://jsbin.mit-license.org
 <script id="jsbin-javascript">
 function submitContact(){
   // Save user input into variables.
-  
+  var fnameValue = document.getElementById("fName").value;
+  var lnameValue = document.getElementById("lName").value;
+  var phoneValue = document.getElementById("phone").value;
+
   
   // Display "lname, fname" into span #nameOutput
-  
+  document.getElementById("nameOutput").innerHTML = fnameValue + " " + lnameValue;
+
   
   // Remove following from phone number string:
   // 1) all spaces
   // 2) all dashes -
   // 3) all opening parenthesis (
-  // 4) all closing parenthesis )
+  // 4) all closing parenthesis 
+  var phoneString = phoneValue;
+  phoneString = phoneString.replace(/\s/g,"");
+  phoneString = phoneString.replace(/\-/g,"");
+  phoneString = phoneString.replace(/\(/g,"");
+  phoneString = phoneString.replace(/\)/g,"");
   
-  
+
   // Display phone number into span #phoneOutput in (xxx) xxx-xxxx format.
+  document.getElementById("phoneOutput").innerHTML = "("+ phoneString.substring(0,3) +") " +phoneString.substring(3,6) + "-" + phoneString.substring(6,10);
 }
 
 function calculatePower(){
   // Save user input into variables. Remember input values are strings.
-
+  var num1Value = parseInt(document.getElementById("num1").value);
+  var num2Value = parseInt(document.getElementById("num2").value);
   
   // Display result from power(num1, num2) into input box #result
-
+  document.getElementById("result").value = power(num1Value, num2Value);
 }
 
 function power(num1, num2){
   // Declare and initialize variable 'result'
-
+  var result = 1;
   
   // Using a loop, calculate num1 ^ num2
-
+  for( i = 0; i<num2; i++){
+    result*=num1;
+  }
   
   // Return the result
-
+  return result;
 }
 </script>
 </body>
